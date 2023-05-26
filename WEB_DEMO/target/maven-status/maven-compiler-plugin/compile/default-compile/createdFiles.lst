@@ -1,0 +1,5 @@
+com\se\demo\entity\UserInfo.class
+com\se\demo\service\impl\UserInfoServiceImpl.class
+com\se\demo\service\UserInfoService.class
+com\se\demo\dao\UserInfoDao.class
+com\se\demo\controller\UseInfoController.class
