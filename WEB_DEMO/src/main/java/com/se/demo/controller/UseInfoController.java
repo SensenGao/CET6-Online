@@ -27,8 +27,8 @@ public class UseInfoController {
     }
 
 
-    @RequestMapping("view.do")
-    public String view(Model model,
+    @RequestMapping("student.do")
+    public String student(Model model,
                         @RequestParam(name = "userId", defaultValue = "")String userId,
                        @RequestParam(name = "userPassword", defaultValue = "")String userPassword){
 //        List<UserInfo> userInfos = userInfoService.findUserInfo(userId, userPassword);
@@ -38,7 +38,7 @@ public class UseInfoController {
 //        System.out.println(userName+","+gender);
         model.addAttribute("name", "aaa");
         model.addAttribute("gender", "gender");
-        return "view";
+        return "student";
     }
 
 

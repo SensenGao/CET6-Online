@@ -31,7 +31,7 @@
 <script type="text/javascript" src="${path}/resource/bootstrap/js/bootstrap.js" ></script>
 <script type="text/javascript">
     function queryData(){
-        location.href="${path}/CET6/view.do?userId="+$("#userid").val()+"&&userPassword="+$("#userpassword").val();
+        location.href="${path}/CET6/student.do?userId="+$("#userid").val()+"&&userPassword="+$("#userpassword").val();
     }
 </script>
 </body>
