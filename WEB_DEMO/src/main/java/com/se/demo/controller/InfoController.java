@@ -3,7 +3,6 @@ package com.se.demo.controller;
 //通话日志控制层
 
 import com.se.demo.entity.ExamInfo;
-import com.se.demo.entity.UserInfo;
 import com.se.demo.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/CET6/")
-public class UseInfoController {
+public class InfoController {
     @Autowired //控制层调用业务层
     private UserInfoService userInfoService;
 

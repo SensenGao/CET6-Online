@@ -1,3 +1,12 @@
 0:0:0:0:0:0:0:1 - - [03/Jun/2023:09:09:22 +0800] "GET /CET6/login.do HTTP/1.1" 200 2485 http-bio-234-exec-1 121
 0:0:0:0:0:0:0:1 - - [03/Jun/2023:09:09:22 +0800] "GET /resource/bootstrap/css/bootstrap.css HTTP/1.1" 304 - http-bio-234-exec-3 16
 0:0:0:0:0:0:0:1 - - [03/Jun/2023:09:09:22 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-234-exec-4 3
+0:0:0:0:0:0:0:1 - - [03/Jun/2023:10:31:07 +0800] "GET /CET6/login.do HTTP/1.1" 200 2869 http-bio-65530-exec-1 1893
+0:0:0:0:0:0:0:1 - - [03/Jun/2023:10:31:08 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-65530-exec-3 2
+0:0:0:0:0:0:0:1 - - [03/Jun/2023:10:31:21 +0800] "GET /CET6/login.do HTTP/1.1" 200 2869 http-bio-65530-exec-5 5
+0:0:0:0:0:0:0:1 - - [03/Jun/2023:10:31:27 +0800] "GET /CET6/student.do?userId=1&&userPassword=1 HTTP/1.1" 200 1971 http-bio-65530-exec-6 32
+0:0:0:0:0:0:0:1 - - [03/Jun/2023:10:31:39 +0800] "GET /CET6/teacher.do?userId=1&&userPassword=1 HTTP/1.1" 404 949 http-bio-65530-exec-9 4
+0:0:0:0:0:0:0:1 - - [03/Jun/2023:10:31:42 +0800] "GET /CET6/teacher.do?userId=1&&userPassword=1 HTTP/1.1" 404 949 http-bio-65530-exec-3 4
+0:0:0:0:0:0:0:1 - - [03/Jun/2023:10:37:51 +0800] "GET /CET6/login.do HTTP/1.1" 200 2869 http-bio-65530-exec-5 6
+0:0:0:0:0:0:0:1 - - [03/Jun/2023:10:37:53 +0800] "GET /CET6/student.do?userId=1&&userPassword=1 HTTP/1.1" 200 1971 http-bio-65530-exec-5 6
+0:0:0:0:0:0:0:1 - - [03/Jun/2023:10:39:46 +0800] "GET /CET6/teacher.do?userId=1&&userPassword=1 HTTP/1.1" 404 949 http-bio-65530-exec-1 71
