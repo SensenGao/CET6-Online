@@ -119,25 +119,53 @@
                 <!-- 在模态框中放置添加考试信息的表单 -->
                 <form action="admin.jsp" method="get">
                     <div class="form-group">
-                        <label for="examName">考试名称:</label>
-                        <input type="text" class="form-control" id="examName" name="examName" required>
+                        <label for="addExamId">考试ID:</label>
+                        <input type="text" class="form-control" id="addExamId" name="addExamId">
                     </div>
 
                     <div class="form-group">
-                        <label for="examDate">考试日期:</label>
-                        <input type="date" class="form-control" id="examDate" name="examDate" required>
+                        <label for="addExamDate">考试日期:</label>
+                        <input type="date" class="form-control" id="addExamDate" name="addExamDate">
                     </div>
 
-                    <button type="button" name="action" value="add" class="btn btn-primary" onclick="addExamInfo()">添加</button>
+                    <button type="button" class="btn btn-primary" onclick="addExamInfo()">添加</button>
                     <script type="text/javascript">
                         function addExamInfo() {
-                            const request = new XMLHttpRequest();
-                            request.open("GET", "${path}/CET6/add_exam.do?examID=" + $("#examName").val() + "&examDate=" + $("#examDate").val(), false);
-                            request.send();
+                            location.href =  "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=addExam&examId=" + $("#addExamId").val() + "&examDate=" + $("#addExamDate").val();
                             alert("考试信息添加成功！");
                         }
                     </script>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 删除考试信息模态框 -->
+<div class="modal fade" id="deleteExamModal" tabindex="-1" role="dialog" aria-labelledby="deleteExamModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteExamModalLabel">删除考试信息</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- 在模态框中放置删除考试信息的表单 -->
+                <form id="deleteExamForm" method="post">
+                    <input type="hidden" id="deleteExamId" name="deleteExamId">
+
+                    <p>确认要删除该考试信息吗？</p>
+
+                    <button type="button" class="btn btn-danger" onclick="deleteExamInfo()">删除</button>
+                </form>
+                <script type="text/javascript">
+                    function deleteExamInfo() {
+                        location.href =  "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=deleteExam&examId=" + $("#deleteExamId").val() + "&examDate=";
+                        alert("考试信息删除成功！");
+                    }
+                </script>
             </div>
         </div>
     </div>
