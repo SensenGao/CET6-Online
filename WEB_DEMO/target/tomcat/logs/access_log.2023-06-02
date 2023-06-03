@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 0:0:0:0:0:0:0:1 - - [02/Jun/2023:23:08:22 +0800] "GET /CET6/login.do HTTP/1.1" 200 1051 http-bio-65530-exec-1 925
 0:0:0:0:0:0:0:1 - - [02/Jun/2023:23:08:22 +0800] "GET /resource/jquery/jquery-2.1.1.min.js HTTP/1.1" 200 84245 http-bio-65530-exec-2 11
 0:0:0:0:0:0:0:1 - - [02/Jun/2023:23:08:22 +0800] "GET /resource/bootstrap/css/bootstrap.css HTTP/1.1" 200 146010 http-bio-65530-exec-3 11
@@ -26,3 +27,17 @@
 0:0:0:0:0:0:0:1 - - [02/Jun/2023:23:56:51 +0800] "GET /CET6/login.do?username=1&password=1&role=student HTTP/1.1" 200 2869 http-bio-65530-exec-1 681
 0:0:0:0:0:0:0:1 - - [02/Jun/2023:23:56:54 +0800] "GET /CET6/student.do?userId=2&&userPassword=2 HTTP/1.1" 200 1971 http-bio-65530-exec-3 15
 0:0:0:0:0:0:0:1 - - [02/Jun/2023:23:57:02 +0800] "GET /CET6/teacher.do?userId=2&&userPassword=2 HTTP/1.1" 404 949 http-bio-65530-exec-5 4
+=======
+0:0:0:0:0:0:0:1 - - [02/Jun/2023:17:35:16 +0800] "GET /login.do HTTP/1.1" 404 949 http-bio-65530-exec-1 46
+0:0:0:0:0:0:0:1 - - [02/Jun/2023:17:35:16 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-65530-exec-3 2
+0:0:0:0:0:0:0:1 - - [02/Jun/2023:17:41:17 +0800] "GET /login.do HTTP/1.1" 404 949 http-bio-65530-exec-1 49
+0:0:0:0:0:0:0:1 - - [02/Jun/2023:17:41:18 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-65530-exec-3 1
+0:0:0:0:0:0:0:1 - - [02/Jun/2023:18:47:48 +0800] "GET /login.do HTTP/1.1" 404 949 http-bio-80-exec-1 51
+0:0:0:0:0:0:0:1 - - [02/Jun/2023:18:47:49 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-80-exec-3 2
+0:0:0:0:0:0:0:1 - - [02/Jun/2023:21:29:37 +0800] "GET /view.do HTTP/1.1" 404 949 http-bio-80-exec-1 55
+0:0:0:0:0:0:0:1 - - [02/Jun/2023:21:29:37 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-80-exec-3 1
+0:0:0:0:0:0:0:1 - - [02/Jun/2023:21:30:51 +0800] "GET /login.do HTTP/1.1" 404 949 http-bio-80-exec-1 47
+0:0:0:0:0:0:0:1 - - [02/Jun/2023:22:11:47 +0800] "GET /CET6/login.do HTTP/1.1" 200 2485 http-bio-234-exec-1 669
+0:0:0:0:0:0:0:1 - - [02/Jun/2023:22:11:47 +0800] "GET /resource/bootstrap/css/bootstrap.css HTTP/1.1" 200 152767 http-bio-234-exec-3 6
+0:0:0:0:0:0:0:1 - - [02/Jun/2023:22:11:47 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-234-exec-4 6
+>>>>>>> db084e9b1f9cd39b3a83d2a0e55d094b1096bdf7
