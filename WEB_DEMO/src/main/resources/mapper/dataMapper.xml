@@ -10,4 +10,15 @@
         and u.password = #{userPassword}
     </select>
 
+    <select id="addUserInfo">
+        insert into userinfo(userid, password, gender, name)
+        value(#{userId}, #{userPassword}, "男", "贾宇航")
+    </select>
+
+    <select id="addSubQuestion">
+        INSERT INTO subjective (Subjective_ID, examinee_ID, Subjective_Stem, Subjective_Answer)
+        SELECT COUNT(*) + 1, 'null', #{Stem}, #{Answer}
+        FROM subjective;
+    </select>
+
 </mapper>
