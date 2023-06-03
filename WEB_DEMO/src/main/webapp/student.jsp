@@ -13,6 +13,7 @@
     <!-- Bootstrap 的 CSS 文件 -->
     <c:set var="path" value="${pageContext.request.contextPath}" scope="page"/>
     <link rel="stylesheet" href="${path}/resource/bootstrap/css/bootstrap.css">
+    <title>用户界面</title>
     <style>
         body {
             background-color: #b9def0;
@@ -20,11 +21,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
         }
 
         .container {
-            max-width: 400px;
             margin: 0 auto;
             padding: 20px;
             background-color: #fff;

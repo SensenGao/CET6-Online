@@ -44,6 +44,7 @@ public class InfoController {
 
     @RequestMapping("admin.do")
     public String admin(Model model){
+        System.out.println("admin.do\n");
         List<ExamInfo> list = new ArrayList<>();
         list.add(new ExamInfo("0", "1", "2"));
         list.add(new ExamInfo("0", "1", "2"));
@@ -51,4 +52,13 @@ public class InfoController {
         return "admin";
     }
 
+
+    @RequestMapping("add_exam.do")
+    public String add_exam(Model model,
+                        @RequestParam(name = "examID", defaultValue = "")String examID,
+                        @RequestParam(name = "examDate", defaultValue = "")String examDate){
+
+        System.out.println("add_exam.do\n");
+        return admin(model);
+    }
 }
