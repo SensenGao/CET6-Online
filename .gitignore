@@ -1,3 +1,4 @@
-WEB_DEMO/src/main/resources/db.properties
-WEB_DEMO/pom.xml
-WEB_DEMO/target
+*.idea
+*db.properties
+*pom.xml
+*target
