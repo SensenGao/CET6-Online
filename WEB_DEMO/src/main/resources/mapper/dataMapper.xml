@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.se.demo.dao.UserInfoDao">
+<mapper namespace="com.se.demo.dao.dataDao">
     <select id="findUserInfo" resultType="UserInfo">
         select u.userid, u.password, u.gender, u.name
         from userinfo u
@@ -10,15 +10,14 @@
         and u.password = #{userPassword}
     </select>
 
-    <select id="addUserInfo">
-        insert into userinfo(userid, password, gender, name)
-        value(#{userId}, #{userPassword}, "男", "贾宇航")
-    </select>
 
     <select id="addSubQuestion">
+--         INSERT INTO subjective (Subjective_ID, examinee_ID, Subjective_Stem, Subjective_Answer)
+--         SELECT MAX(Subjective_ID) + 1,  'null', #{Stem}, #{Answer}
+--         FROM subjective
+        SELECT MAX(Subjective_ID) + 1 INTO @maxID FROM subjective;
         INSERT INTO subjective (Subjective_ID, examinee_ID, Subjective_Stem, Subjective_Answer)
-        SELECT COUNT(*) + 1, 'null', #{Stem}, #{Answer}
-        FROM subjective;
+        VALUES (@maxID + 1, '1', #{Stem}, #{Answer});
     </select>
 
 </mapper>

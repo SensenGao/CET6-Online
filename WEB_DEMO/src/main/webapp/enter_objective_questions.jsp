@@ -14,7 +14,7 @@
 <div class="container">
     <h1>Objective Questions</h1>
 
-    <form>
+    <form action="enter_objective_questions.jsp" method="POST">
         <div class="form-group">
             <label for="question">Question:</label>
             <textarea class="form-control" id="question" name="question" rows="4"></textarea>

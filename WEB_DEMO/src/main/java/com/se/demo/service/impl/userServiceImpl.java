@@ -1,8 +1,8 @@
 package com.se.demo.service.impl;
 
-import com.se.demo.entity.UserInfo;
 import com.se.demo.dao.dataDao;
-import com.se.demo.service.userService;
+import com.se.demo.entity.UserInfo;
+import com.se.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.Map;
 
 
 @Service
-public class userServiceImpl implements userService {
+public class UserServiceImpl implements UserService {
     @Autowired
     private dataDao mydataDao;
 
@@ -24,14 +24,6 @@ public class userServiceImpl implements userService {
         List<UserInfo> list = mydataDao.findUserInfo(map);
 
         return list;
-    }
-
-    @Override
-    public void addUserInfo(String userId, String userPassword) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("userId", userId);
-        map.put("userPassword", userPassword);
-        mydataDao.addUserInfo(map);
     }
 
     @Override

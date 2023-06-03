@@ -1,7 +1,7 @@
 com\se\demo\entity\UserInfo.class
 com\se\demo\dao\dataDao.class
-com\se\demo\service\impl\userServiceImpl.class
-com\se\demo\service\userService.class
 com\se\demo\controller\webController.class
 com\se\demo\entity\ExamInfo.class
+com\se\demo\service\impl\UserServiceImpl.class
+com\se\demo\service\UserService.class
 com\se\demo\entity\SubjectiveQuestion.class
