@@ -23,6 +23,7 @@ public class UseInfoController {
 
     @RequestMapping("login.do")
     public String login(){
+
         return "login";
     }
 
