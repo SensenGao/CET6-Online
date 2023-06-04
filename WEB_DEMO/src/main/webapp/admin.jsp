@@ -368,9 +368,9 @@
                         <label for="addTeacherGender">教师性别<span style="color:red; white-space: nowrap;"> *
                                         </span></label>
                         <select name="addTeacherGender" id="addTeacherGender" required>
-                            <option value="男">男</option>
-                            <option value="女">女</option>
-                            <option value="其它">其它</option>
+                            <option value="male">男</option>
+                            <option value="female">女</option>
+                            <option value="other">其它</option>
                         </select>
                     </div>
 
@@ -434,9 +434,9 @@
                         <label for="addStudentGender">学生性别<span style="color:red; white-space: nowrap;"> *
                                         </span></label>
                         <select name="addStudentGender" id="addStudentGender" required>
-                            <option value="男">男</option>
-                            <option value="女">女</option>
-                            <option value="其它">其它</option>
+                            <option value="male">男</option>
+                            <option value="female">女</option>
+                            <option value="other">其它</option>
                         </select>
                     </div>
 
