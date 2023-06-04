@@ -14,7 +14,7 @@
 <div class="container">
     <h1>Objective Questions</h1>
 
-    <form action="enter_objective_questions.jsp" method="POST">
+    <form>
         <div class="form-group">
             <label for="question">Question:</label>
             <textarea class="form-control" id="question" name="question" rows="4"></textarea>
@@ -68,8 +68,22 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" onclick="insertData()">Submit</button>
     </form>
 </div>
+<script type="text/javascript" src="${path}/resource/jquery/jquery-2.1.1.min.js" ></script>
+<script type="text/javascript" src="${path}/resource/bootstrap/js/bootstrap.js" ></script>
+<script type="text/javascript">
+    function insertData(){
+        var selectedAnswer;
+        var radioButtons = document.getElementsByName("correctAnswer");
+        for (var i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].checked) {
+                selectedAnswer = radioButtons[i].value; break;
+            }
+        }
+        location.href="${path}/CET6/enter_objective_questions.do?question="+$("#question").val()+"&&option1="+$("#optionA").val()+"&&option2="+$("#optionB").val()+"&&option3="+$("#optionC").val()+"&&option4="+$("#optionD").val()+"&&answer="+encodeURIComponent(selectedAnswer);
+    }
+</script>
 </body>
 </html>
