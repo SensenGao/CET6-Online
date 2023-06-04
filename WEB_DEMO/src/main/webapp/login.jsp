@@ -87,8 +87,8 @@
         <script type="text/javascript">
             alert("登录成功，正在跳转到学生页面...");
             // 使用 JavaScript 的方式实现自动跳转
-            setTimeout(function() {
-                location.href = "${path}/CET6/student.do?userId=&userPassword=";
+            setTimeout(function () {
+                location.href = "${path}/CET6/student.do?userId=" + $("#username").val() + "&userPassword=" + $("#password").val();
             }, 500); // 延迟 0.5 秒后跳转
         </script>
     </c:when>
@@ -96,8 +96,8 @@
         <script type="text/javascript">
             alert("登录成功，正在跳转到教师页面...");
             // 使用 JavaScript 的方式实现自动跳转
-            setTimeout(function() {
-                location.href = "${path}/CET6/teacher.do?userId=&userPassword=";
+            setTimeout(function () {
+                location.href = "${path}/CET6/teacher.do?userId=" + $("#username").val() + "&userPassword=" + $("#password").val();
             }, 500); // 延迟 0.5 秒后跳转
         </script>
     </c:when>
@@ -105,8 +105,8 @@
         <script type="text/javascript">
             alert("登录成功，正在跳转到管理员页面...");
             // 使用 JavaScript 的方式实现自动跳转
-            setTimeout(function() {
-                location.href = "${path}/CET6/admin.do?userId=&userPassword=";
+            setTimeout(function () {
+                location.href = "${path}/CET6/admin.do?userId=" + ${userId} +"&userPassword=" + ${userPassword};
             }, 500); // 延迟 0.5 秒后跳转
         </script>
     </c:when>

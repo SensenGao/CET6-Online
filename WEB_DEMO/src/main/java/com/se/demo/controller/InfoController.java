@@ -132,6 +132,9 @@ public class InfoController {
         list.add(new ExamInfo("0", "1", "2", "", "", "", ""));
         list.add(new ExamInfo("1", "1", "1", "", "", "", ""));
         model.addAttribute("examList", list);
+
+        model.addAttribute("userId", userId);
+        model.addAttribute("userPassword", userPassword);
         return "admin";
     }
 
