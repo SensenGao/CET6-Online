@@ -30,12 +30,7 @@ public class InfoController {
     @RequestMapping("student.do")
     public String student(Model model,
                         @RequestParam(name = "userId", defaultValue = "")String userId,
-                       @RequestParam(name = "userPassword", defaultValue = "")String userPassword){
-//        List<UserInfo> userInfos = userInfoService.findUserInfo(userId, userPassword);
-
-//        String gender = userInfos.get(0).getGender();
-//        String userName = userInfos.get(0).getName();
-//        System.out.println(userName+","+gender);
+                        @RequestParam(name = "userPassword", defaultValue = "")String userPassword){
         model.addAttribute("name", "aaa");
         model.addAttribute("gender", "gender");
         return "student";

@@ -19,11 +19,16 @@
         }
 
         .container {
+            width: 100%;
             margin: 0 auto;
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            border-collapse: collapse;
         }
 
         h2 {
@@ -66,8 +71,14 @@
             background-color: #45a049;
         }
 
-        th {
+        th, td {
+            padding: 8px;
             text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th, td:hover {
+            background-color: #f5f5f5;
         }
     </style>
 </head>
@@ -80,9 +91,11 @@
             <h2>考试信息管理</h2>
 
             <!-- 添加考试信息按钮 -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addExamModal">
-                添加考试信息
-            </button>
+            <div class="text-center">
+                <button type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#addExamModal">
+                    添加考试信息
+                </button>
+            </div>
 
             <!-- 考试信息列表 -->
             <table class="table">
@@ -122,7 +135,7 @@
                 <script type="text/javascript">
                     function updateExamInfo(examId, field, new_value) {
                         location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=updateExam&examId=" + examId + "&" + field + "=" + new_value;
-                        alert("exam " + examId + " 更改成功！");
+                        // alert("exam " + examId + " 更改成功！");
                     }
 
                     function deleteExamInfo(examId) {
@@ -140,10 +153,12 @@
             <h2>教师信息管理</h2>
 
             <!-- 添加教师信息按钮 -->
-            <button type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#addTeacherModal">
-                添加教师信息
-            </button>
+            <div class="text-center">
+                <button type="button" class="btn btn-primary mx-auto" data-toggle="modal"
+                        data-target="#addTeacherModal">
+                    添加教师信息
+                </button>
+            </div>
 
             <!-- 教师信息列表 -->
             <table class="table">
@@ -191,7 +206,7 @@
                 <script type="text/javascript">
                     function updateTeacherInfo(teacherId, field, new_value) {
                         location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=updateTeacher&teacherId=" + teacherId + "&" + field + "=" + new_value;
-                        alert("teacher " + teacherId + " 更改成功！");
+                        // alert("teacher " + teacherId + " 更改成功！");
                     }
 
                     function deleteTeacherInfo(teacherId) {
@@ -209,10 +224,12 @@
             <h2>学生信息管理</h2>
 
             <!-- 添加学生信息按钮 -->
-            <button type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#addStudentModal">
-                添加学生信息
-            </button>
+            <div class="text-center">
+                <button type="button" class="btn btn-primary mx-auto" data-toggle="modal"
+                        data-target="#addStudentModal">
+                    添加学生信息
+                </button>
+            </div>
 
             <!-- 学生信息列表 -->
             <table class="table">
@@ -260,7 +277,7 @@
                 <script type="text/javascript">
                     function updateStudentInfo(studentId, field, new_value) {
                         location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=updateStudent&studentId=" + studentId + "&" + field + "=" + new_value;
-                        alert("student " + studentId + " 更改成功！");
+                        // alert("student " + studentId + " 更改成功！");
                     }
 
                     function deleteStudentInfo(studentId) {
@@ -358,17 +375,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="addTeacherEmail">教师Email<span style="color:red; white-space: nowrap;"> *
-                                        </span></label>
-                        <input type="text" class="form-control" id="addTeacherEmail" name="addTeacherEmail"
-                               required>
+                        <label for="addTeacherEmail">教师Email</label>
+                        <input type="text" class="form-control" id="addTeacherEmail" name="addTeacherEmail">
                     </div>
 
                     <div class="form-group">
-                        <label for="addTeacherTel">教师Tel<span style="color:red; white-space: nowrap;"> *
-                                        </span></label>
-                        <input type="text" class="form-control" id="addTeacherTel" name="addTeacherTel"
-                               required>
+                        <label for="addTeacherTel">教师Tel</label>
+                        <input type="text" class="form-control" id="addTeacherTel" name="addTeacherTel">
                     </div>
 
                     <div class="form-group">
@@ -428,17 +441,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="addStudentEmail">学生Email<span style="color:red; white-space: nowrap;"> *
-                                        </span></label>
-                        <input type="text" class="form-control" id="addStudentEmail" name="addStudentEmail"
-                               required>
+                        <label for="addStudentEmail">学生Email</label>
+                        <input type="text" class="form-control" id="addStudentEmail" name="addStudentEmail">
                     </div>
 
                     <div class="form-group">
-                        <label for="addStudentTel">学生Tel<span style="color:red; white-space: nowrap;"> *
-                                        </span></label>
-                        <input type="text" class="form-control" id="addStudentTel" name="addStudentTel"
-                               required>
+                        <label for="addStudentTel">学生Tel</label>
+                        <input type="text" class="form-control" id="addStudentTel" name="addStudentTel">
                     </div>
 
                     <div class="form-group">
