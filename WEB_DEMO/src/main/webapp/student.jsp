@@ -3,70 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>学生界面</title>
-    <c:set var="path" value="${pageContext.request.contextPath}" scope="page"/>
-    <link rel="stylesheet" href="${path}/resource/bootstrap/css/bootstrap.css">
+    <title>试卷列表</title>
     <style>
-        body {
-            background-color: #b9def0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            width: 100%;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
         table {
+            width: 100%;
             border-collapse: collapse;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"],
-        input[type="password"],
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        input[type="submit"],
-        input[type="button"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-right: 5px;
-            /* 添加右侧边距 */
-        }
-
-        input[type="submit"]:hover,
-        input[type="button"]:hover {
-            background-color: #45a049;
         }
 
         th, td {
@@ -82,7 +23,13 @@
     <script>
         function showExamDetails(examId) {
             // 弹出报名考试的详细信息和确认提示框
-            if (confirm("考试ID：" + examId + "\n\n" + "确定要报名该考试吗？")) {
+            var examDetails = "考试ID：" + examId + "<br>" +
+                "考试日期：2023-06-10<br>" +
+                "考试地点：考试中心";
+            var confirmMessage = "确定要报名该考试吗？";
+
+            var confirmDialog = confirm(examDetails + "\n\n" + confirmMessage);
+            if (confirmDialog) {
                 // 执行报名考试的操作，可以是提交表单或其他逻辑
                 alert("报名成功！");
             }
@@ -90,7 +37,10 @@
 
         function showPaymentDialog(examId) {
             // 弹出考试缴费的确认提示框
-            if (confirm("请确认是否缴费？")) {
+            var confirmMessage = "请确认是否缴费？";
+
+            var confirmDialog = confirm(confirmMessage);
+            if (confirmDialog) {
                 // 执行缴费操作，可以是提交表单或其他逻辑
                 alert("缴费成功！");
             }
@@ -98,45 +48,47 @@
 
         function showEnterExamDialog(examId) {
             // 弹出进入考试的确认提示框
-            if (confirm("确定要进入考试吗？")) {
-                // 执行进入考试的操作，可以是跳转到考试页面或其他逻辑
-                alert("进入考试！");
+            var confirmMessage = "确定要进入考试吗？";
+
+            var confirmDialog = confirm(confirmMessage);
+            if (confirmDialog) {
+                // 跳转到考生答题界面
+                location.href = "${path}/CET6/" + "test.do?examId="+examId;
             }
         }
     </script>
 </head>
-
 <body>
+<h1>试卷列表</h1>
+<table>
+    <tr>
+        <th>试卷ID</th>
+        <th>试卷日期</th>
+        <th>操作</th>
+    </tr>
 
-<div class="container">
-    <h1 class="text-center">试卷列表</h1>
-    <table class="table table-striped">
-        <thead>
+    <tr>
+        <td>111</td>
+        <td>"2020-07-14"</td>
+        <td>
+            <button onclick="showExamDetails(111)">报名考试</button>
+            <button onclick="showPaymentDialog(111)">考试缴费</button>
+            <button onclick="showEnterExamDialog(111)">进入考试</button>
+        </td>
+    </tr>
+
+
+    <c:forEach var="exam" items="${examList}">
         <tr>
-            <th>试卷ID</th>
-            <th>试卷日期</th>
-            <th>操作</th>
+            <td>${exam.examId}</td>
+            <td>${exam.examDate}</td>
+            <td>
+                <button onclick="showExamDetails(${exam.examId})">报名考试</button>
+                <button onclick="showPaymentDialog(${exam.examId})">考试缴费</button>
+                <button onclick="showEnterExamDialog(${exam.examId})">进入考试</button>
+            </td>
         </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="exam" items="${examList}">
-            <tr>
-                <td>${exam.id}</td>
-                <td>${exam.date}</td>
-                <td>
-                    <button class="btn btn-primary" onclick="showExamDetails('${exam.id}')">报名考试</button>
-                    <button class="btn btn-info" onclick="showPaymentDialog('${exam.id}')">考试缴费</button>
-                    <button class="btn btn-success" onclick="showEnterExamDialog('${exam.id}')">进入考试</button>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-</div>
-
-<script type="text/javascript" src="${path}/resource/jquery/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="${path}/resource/bootstrap/js/bootstrap.js"></script>
-
+    </c:forEach>
+</table>
 </body>
-
 </html>

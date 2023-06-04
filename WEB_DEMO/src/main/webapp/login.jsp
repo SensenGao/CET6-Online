@@ -74,48 +74,10 @@
     </style>
 </head>
 <body>
-
-
-<c:choose>
-    <c:when test="${flag == 1}">
-        <script type="text/javascript">
-            alert("登录失败，请重新输入！");
-            // 使用 JavaScript 的方式实现自动跳转
-        </script>
-    </c:when>
-    <c:when test="${flag == 2}">
-        <script type="text/javascript">
-            alert("登录成功，正在跳转到学生页面...");
-            // 使用 JavaScript 的方式实现自动跳转
-            setTimeout(function() {
-                location.href = "${path}/CET6/student.do?userId=&userPassword=";
-            }, 500); // 延迟 0.5 秒后跳转
-        </script>
-    </c:when>
-    <c:when test="${flag == 3}">
-        <script type="text/javascript">
-            alert("登录成功，正在跳转到教师页面...");
-            // 使用 JavaScript 的方式实现自动跳转
-            setTimeout(function() {
-                location.href = "${path}/CET6/teacher.do?userId=&userPassword=";
-            }, 500); // 延迟 0.5 秒后跳转
-        </script>
-    </c:when>
-    <c:when test="${flag == 4}">
-        <script type="text/javascript">
-            alert("登录成功，正在跳转到管理员页面...");
-            // 使用 JavaScript 的方式实现自动跳转
-            setTimeout(function() {
-                location.href = "${path}/CET6/admin.do?userId=&userPassword=";
-            }, 500); // 延迟 0.5 秒后跳转
-        </script>
-    </c:when>
-</c:choose>
-
 <div class="container">
     <h2>用户登录</h2>
     <form>
-        <label for="username">账号:</label>
+        <label for="username">用户名:</label>
         <input type="text" id="username" name="username" required>
 
         <label for="password">密码:</label>
@@ -129,18 +91,13 @@
         </select>
 
         <div style="display: flex; justify-content: space-between;">
-            <input type="button" value="登录" onclick="loginData()">
-            <input type="button" value="注册" onclick="signData()">
+            <input type="button" value="登录" onclick="queryData()">
+            <input type="button" value="注册" onclick="queryData()">
         </div>
 
         <script type="text/javascript">
-            function loginData() {
-                location.href = "${path}/CET6/login.do?" + "role=" + $("#role").val() + "&userId=" + $("#username").val() + "&userPassword=" + $("#password").val();
-            }
-        </script>
-        <script type="text/javascript">
-            function signData() {
-                location.href = "${path}/CET6/sign.do";
+            function queryData() {
+                location.href = "${path}/CET6/" + $("#role").val() + ".do?userId=" + $("#username").val() + "&&userPassword=" + $("#password").val();
             }
         </script>
     </form>

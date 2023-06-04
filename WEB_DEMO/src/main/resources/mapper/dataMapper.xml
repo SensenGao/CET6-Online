@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.se.demo.dao.dataDao">
+    <select id="findUserInfo" resultType="UserInfo">
+        select u.userid, u.password, u.gender, u.name
+        from userinfo u
+        where u.userid = #{userId}
+        and u.password = #{userPassword}
+    </select>
+
+    <select id="addSubQuestion">
+        INSERT INTO subjective (Subjective_ID, Examinee_ID, Subjective_Stem, Subjective_Answer)
+        SELECT MAX(Subjective_ID) + 1,  'null', #{Stem}, #{Answer}
+        FROM subjective
+    </select>
+
+    <select id="addOptQuestion">
+        INSERT INTO choice (Choice_ID, Examiner_ID, Choice_Stem, Choice_Options, Choice_Answer)
+        SELECT MAX(Choice_ID) + 1,  'null', #{Stem}, #{Options}, #{Answer}
+        FROM choice
+    </select>
+
+    <select id="getSubQuestions" resultType="SubjectiveQuestion">
+--         SELECT s.Subjective_ID, s.Examinee_ID, s.Subjective_Stem, s.Subjective_Answer
+        SELECT *
+        FROM subjective
+    </select>
+
+
+    <select id="getExamSub" resultType="ExamPaper">
+        SELECT *
+        FROM exampaper e
+        WHERE e.ExamPaper_ID = #{ExamPaper_ID}
+    </select>
+
+    <select id="getSubById" resultType="SubjectiveQuestion">
+        SELECT *
+        FROM subjective s
+        WHERE s.Subjective_ID = #{Subjective_ID}
+    </select>
+
+    <select id="changeSubofExam">
+        UPDATE exampaper e
+        SET e.Subjective_IDs = #{newSub}
+        WHERE e.ExamPaper_ID = #{examId}
+    </select>
+</mapper>
