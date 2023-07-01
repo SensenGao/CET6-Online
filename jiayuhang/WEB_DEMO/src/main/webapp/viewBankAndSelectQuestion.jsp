@@ -9,13 +9,38 @@
     <link rel="stylesheet" href="${path}/resource/bootstrap/css/bootstrap.css">
     <style>
         body {
-            background-color: #b9def0;
+            background-color: #a6e1e2;
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
+
+        .navbar {
+            background-color: #30679a;
+            color: white;
+            top: 0;
+            width: 100%; /* Set the desired width */
+            height: 80px;
+            z-index: 1;
+            position: fixed;
+        }
+        .navbar-brand {
+            color: white;
+            margin-left: 10px;
+        }
+        .navbar-text {
+            color: white;
+            margin-right: 10px;
+        }
+        .logo-img {
+            width: 480px;
+            height: 80px;
+            z-index: 2;
+            position: fixed;
+        }
+
         .container {
             width: 40%;
             float: left;
@@ -40,6 +65,10 @@
         .table {
             width: 100%;
             table-layout: fixed;
+            border: 3px solid darkgray;
+        }
+        .table td, .table th {
+            border: 3px solid darkgray;
         }
 
 
@@ -50,6 +79,7 @@
         }
 
         .question-list {
+            font-size: 32px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -58,8 +88,8 @@
         .question-number {
             width: 50px;
             height: 50px;
-            border: 1px solid #000;
-            background-color: #4476A7;
+            border: 2px solid #000;
+            background-color: #ADD8E6;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -108,23 +138,34 @@
     </style>
 </head>
 <body>
+
+
+
+<nav class="navbar">
+    <div class="container-fluid">
+        <span class="navbar-brand" style="font-size: 32px; text-align: center; line-height: 50px; margin-left: 490px;">教师端</span>
+        <span class="navbar-text" style="font-size: 20px; text-align: center; line-height: 50px; margin-left: 1040px;">欢迎，jiayuhang老师</span>
+    </div>
+</nav>
+
+<div style="position: absolute; top: 0; left: 0;">
+    <img src="${path}/resource/picture/logo.jpg" alt="Icon" class="logo-img">
+</div>
+
 <div class="center-line"></div>
 <div class="container">
-    <h1>选择题</h1>
+    <h1 style="font-size: 40px;font-weight:600;">选择题</h1>
     <div class="question-list">
         <c:forEach var="option" items="${optionList}">
-
         </c:forEach>
 
 
-
-        <% for (int i = 1; i <= 20; i++) { %>
+        <% for (int i = 1; i <= 24; i++) { %>
         <div class="question-number" onclick="openModal(<%= i %>)"><%= i %></div>
         <% } %>
     </div>
     <h1> </h1>
-    <h1> </h1>
-    <h1>主观题</h1>
+    <h1 style="font-size: 40px;font-weight:600;">主观题</h1>
     <div class="question-list">
         <% int i = 1; %>
         <c:forEach var="subQuestion" items="${subQuestionList}">
@@ -133,63 +174,67 @@
         </c:forEach>
 
     </div>
+    <h1> </h1>
+    <h1> </h1>
 </div>
 
 <div class="manageContainer">
-    <h1>试卷题目列表</h1>
+    <br><br>
+    <br><br>
+    <br><br>
+    <h1 style="font-size: 40px;font-weight:600;">试卷题目列表</h1>
 
-    <h2>选择题</h2>
+    <h2 style="font-size: 30px;font-weight:600;">选择题</h2>
     <!-- 考试信息列表 -->
     <table class="table">
-        <thead>
-        <tr>
-            <th>试题编号</th>
-            <th>试题内容</th>
-            <th>操作</th>
-        </tr>
-        </thead>
         <tbody>
-        <!-- 使用JSP标签循环遍历考试信息 -->
-        <c:forEach var="exam" items="${examList}">
-            <tr>
-                <td>${exam.name}</td>
-                <td>${exam.date}</td>
-                <td>
-                    <!-- 删除考试信息按钮 -->
-                    <button type="button" class="btn btn-danger" data-toggle="modal"
-                            data-target="#deleteExamModal" data-examid="${exam.id}">
-                        删除
-                    </button>
-                </td>
-            </tr>
-        </c:forEach>
+        <tr>
+            <td style="font-size: 20px;font-weight:600;">试题编号</td>
+            <td style="font-size: 20px;font-weight:600;">试题内容</td>
+            <td style="font-size: 20px;font-weight:600;">操作</td>
+        </tr>
+        <tr>
+            <td style="font-size: 18px;font-weight:450;">1</td>
+            <td style="font-size: 18px;font-weight:450;">Youth is n...</td>
+            <td><button type="button" class="btn btn-danger"
+                        style="font-size: 18px;font-weight:450;">删除</button></td>
+        </tr>
+        <tr>
+            <td style="font-size: 18px;font-weight:450;">2</td>
+            <td style="font-size: 18px;font-weight:450;">When your...</td>
+            <td><button type="button" class="btn btn-danger"
+                        style="font-size: 18px;font-weight:450;">删除</button></td>
+        </tr>
+        <tr>
+            <td style="font-size: 18px;font-weight:450;">3</td>
+            <td style="font-size: 18px;font-weight:450;">In stories e...</td>
+            <td><button type="button" class="btn btn-danger"
+                        style="font-size: 18px;font-weight:450;">删除</button></td>
+        </tr>
         </tbody>
+
     </table>
-    <h2>主观题</h2>
+    <h2 style="font-size: 30px;font-weight:600;">主观题</h2>
     <table class="table">
-        <thead>
-        <tr>
-            <th>试题编号</th>
-            <th>试题内容</th>
-            <th>操作</th>
-        </tr>
-        </thead>
         <tbody>
+        <tr>
+            <td style="font-size: 20px;font-weight:600;">试题编号</td>
+            <td style="font-size: 20px;font-weight:600;">试题内容</td>
+            <td style="font-size: 20px;font-weight:600;">操作</td>
+        </tr>
         <!-- 使用JSP标签循环遍历考试信息 -->
         <c:forEach var="exam" items="${examSublist}">
             <tr>
-                <td>${exam.getSubjective_ID()}</td>
-                <td>${exam.getSubjective_Stem20()}</td>
+                <td style="font-size: 18px;font-weight:450;">${exam.getSubjective_ID()}</td>
+                <td style="font-size: 18px;font-weight:450;">${exam.getSubjective_Stem20()}</td>
                 <td>
                     <!-- 删除考试信息按钮 -->
-                    <button type="button" class="btn btn-danger" >
-                        删除
-                    </button>
+                    <button type="button" class="btn btn-danger"
+                            style="font-size: 18px;font-weight:450;">删除</button>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
-
     </table>
 </div>
 

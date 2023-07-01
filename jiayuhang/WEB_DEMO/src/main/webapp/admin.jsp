@@ -6,16 +6,72 @@
 <head>
     <meta charset="UTF-8">
     <title>管理员界面</title>
+    <script>
+        function showTab(tabName) {
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+    </script>
     <!-- Bootstrap 的 CSS 文件 -->
     <c:set var="path" value="${pageContext.request.contextPath}" scope="page"/>
     <link rel="stylesheet" href="${path}/resource/bootstrap/css/bootstrap.css">
     <style>
-        body {
-            background-color: #b9def0;
-            font-family: Arial, sans-serif;
+
+        .sidebar {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar-button {
+            flex: 1;
+            margin: 0 5px;
+            background-color: #f5f5f5;
+            border: none;
+        }
+
+        .left {
+            justify-self: flex-start;
+        }
+
+        .center {
+            justify-self: center;
+        }
+
+        .right {
+            justify-self: flex-end;
+        }
+
+        .tab {
+            display: none;
+        }
+
+        body {
+            background-color: #a6e1e2;
+            /*font-family: Arial, sans-serif;*/
+            /*display: flex;*/
+            /*justify-content: center;*/
+            /*align-items: center;*/
+        }
+        .navbar {
+            background-color: #30679a;
+            color: white;
+            width: 100%; /* Set the desired width */
+            height: 80px;
+        }
+        .navbar-brand {
+            color: white;
+            margin-left: 10px;
+        }
+        .navbar-text {
+            color: white;
+            margin-right: 10px;
+        }
+        .logo-img {
+            width: 480px;
+            height: 80px;
         }
 
         .container {
@@ -28,7 +84,9 @@
         }
 
         table {
+            /*width: 50%;*/
             border-collapse: collapse;
+            margin: 30px auto 0;
         }
 
         h2 {
@@ -76,220 +134,240 @@
             text-align: center;
             border-bottom: 1px solid #ddd;
             style: "overflow-x: auto; white-space: nowrap;";
+            background-color: #ffffff;
         }
 
         th, td:hover {
             background-color: #f5f5f5;
         }
+
+        button {
+            padding: 10px 20px; /* 自定义按钮的内边距 */
+            font-size: 30px; /* 自定义按钮的字体大小 */
+        }
     </style>
 </head>
 
 <body>
-<div class="container">
-    <div class="row">
-        <!-- 左侧部分，显示所有的考试信息 -->
-        <div class="col-md-4" style="overflow-x: auto; white-space: nowrap;">
-            <h2>考试信息管理</h2>
 
-            <!-- 添加考试信息按钮 -->
-            <div class="text-center">
-                <button type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#addExamModal">
-                    添加考试信息
-                </button>
-            </div>
+<nav class="navbar">
+    <div class="container-fluid">
+        <span class="navbar-brand" style="font-size: 32px; text-align: center; line-height: 50px; margin-left: 490px;">管理员界面</span>
+        <span class="navbar-text ml-auto" style="font-size: 20px; text-align: center; line-height: 50px; margin-left: 1040px;">欢迎，管理员</span>
+    </div>
+</nav>
 
-            <!-- 考试信息列表 -->
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>考试ID</th>
-                    <th>考试名称</th>
-                    <th>考试日期</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- 使用JSP标签循环遍历考试信息 -->
-                <c:forEach var="exam" items="${examList}">
-                    <tr>
-                        <td>${exam.id}</td>
-                        <td contenteditable="true"
-                            onblur="updateExamInfo('${exam.id}', 'examName', this.innerText)">${exam.name}
-                        </td>
-                        <td contenteditable="true"
-                            onblur="updateExamInfo('${exam.id}', 'examDate', this.innerText)">
-                                ${exam.date}</td>
-                        <td>
-                            <!-- 删除考试信息按钮 -->
-                            <button type="button" class="btn btn-danger"
-                                    onclick="deleteExamInfo('${exam.id}')">
-                                删除
-                            </button>
-                            <!-- 查看考试信息按钮 TODO -->
-                            <button type="button" class="btn btn-success">
-                                查看
-                            </button>
-                        </td>
-                    </tr>
-                </c:forEach>
+<div style="position: absolute; top: 0; left: 0;">
+    <img src="${path}/resource/picture/logo.jpg" alt="Icon" class="logo-img">
+</div>
 
-                <script type="text/javascript">
-                    function updateExamInfo(examId, field, new_value) {
-                        location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=updateExam&examId=" + examId + "&" + field + "=" + new_value;
-                        // alert("exam " + examId + " 更改成功！");
-                    }
 
-                    function deleteExamInfo(examId) {
-                        location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=deleteExam&examId=" + examId;
-                        alert("exam " + examId + " 删除成功！");
-                    }
-                </script>
 
-                </tbody>
-            </table>
-        </div>
+<div class="sidebar">
+    <button class="sidebar-button left" onclick="showTab('exam')">考试信息管理</button>
+    <button class="sidebar-button center" onclick="showTab('teacher')">教师信息管理</button>
+    <button class="sidebar-button right" onclick="showTab('student')">学生信息管理</button>
+</div>
 
-        <!-- 中间部分，显示所有的教师信息 -->
-        <div class="col-md-4" style="overflow-x: auto; white-space: nowrap;">
-            <h2>教师信息管理</h2>
 
-            <!-- 添加教师信息按钮 -->
-            <div class="text-center">
-                <button type="button" class="btn btn-primary mx-auto" data-toggle="modal"
-                        data-target="#addTeacherModal">
-                    添加教师信息
-                </button>
-            </div>
+<div id="exam" class="tab" style="width:50%; margin:auto; display:block">
+    <h2>考试信息管理</h2>
 
-            <!-- 教师信息列表 -->
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>教师ID</th>
-                    <th>姓名</th>
-                    <th>性别</th>
-                    <th>Email</th>
-                    <th>Tel</th>
-                    <th>Password</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- 使用JSP标签循环遍历教师信息 -->
-                <c:forEach var="teacher" items="${teacherList}">
-                    <tr>
-                        <td>${teacher.id}</td>
-                        <td contenteditable="true"
-                            onblur="updateTeacherInfo('${teacher.id}', 'teacherName', this.innerText)">
-                                ${teacher.name}</td>
-                        <td contenteditable="true"
-                            onblur="updateTeacherInfo('${teacher.id}', 'teacherGender', this.innerText)">
-                                ${teacher.gender}</td>
-                        <td contenteditable="true"
-                            onblur="updateTeacherInfo('${teacher.id}', 'teacherEmail', this.innerText)">
-                                ${teacher.email}</td>
-                        <td contenteditable="true"
-                            onblur="updateTeacherInfo('${teacher.id}', 'teacherTel', this.innerText)">
-                                ${teacher.tel}</td>
-                        <td contenteditable="true"
-                            onblur="updateTeacherInfo('${teacher.id}', 'teacherPassword', this.innerText)">
-                                ${teacher.password}</td>
-                        <td>
-                            <!-- 删除教师信息按钮 -->
-                            <button type="button" class="btn btn-danger"
-                                    onclick="deleteTeacherInfo('${teacher.id}')">
-                                删除
-                            </button>
-                        </td>
-                    </tr>
-                </c:forEach>
+    <!-- 考试信息列表 -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th>考试ID</th>
+            <th>考试名称</th>
+            <th>考试日期</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- 使用JSP标签循环遍历考试信息 -->
+        <c:forEach var="exam" items="${examList}">
+            <tr>
+                <td>${exam.id}</td>
+                <td contenteditable="true"
+                    onblur="updateExamInfo('${exam.id}', 'examName', this.innerText)">${exam.name}
+                </td>
+                <td contenteditable="true"
+                    onblur="updateExamInfo('${exam.id}', 'examDate', this.innerText)">
+                        ${exam.date}</td>
+                <td>
+                    <!-- 删除考试信息按钮 -->
+                    <button type="button" class="btn btn-danger"
+                            onclick="deleteExamInfo('${exam.id}')">
+                        删除
+                    </button>
+                    <!-- 查看考试信息按钮 TODO -->
+                    <button type="button" class="btn btn-success">
+                        查看
+                    </button>
+                </td>
+            </tr>
+        </c:forEach>
 
-                <script type="text/javascript">
-                    function updateTeacherInfo(teacherId, field, new_value) {
-                        location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=updateTeacher&teacherId=" + teacherId + "&" + field + "=" + new_value;
-                        // alert("teacher " + teacherId + " 更改成功！");
-                    }
+        <script type="text/javascript">
+            function updateExamInfo(examId, field, new_value) {
+                location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=updateExam&examId=" + examId + "&" + field + "=" + new_value;
+                // alert("exam " + examId + " 更改成功！");
+            }
 
-                    function deleteTeacherInfo(teacherId) {
-                        location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=deleteTeacher&teacherId=" + teacherId;
-                        alert("teacher " + teacherId + " 删除成功！");
-                    }
-                </script>
+            function deleteExamInfo(examId) {
+                location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=deleteExam&examId=" + examId;
+                alert("exam " + examId + " 删除成功！");
+            }
+        </script>
 
-                </tbody>
-            </table>
-        </div>
+        </tbody>
+    </table>
 
-        <!-- 右侧部分，显示所有的学生信息 -->
-        <div class="col-md-4" style="overflow-x: auto; white-space: nowrap;">
-            <h2>学生信息管理</h2>
+    <!-- 添加考试信息按钮 -->
+    <div class="text-center">
+        <button type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#addExamModal">
+            添加考试信息
+        </button>
+    </div>
+</div>
 
-            <!-- 添加学生信息按钮 -->
-            <div class="text-center">
-                <button type="button" class="btn btn-primary mx-auto" data-toggle="modal"
-                        data-target="#addStudentModal">
-                    添加学生信息
-                </button>
-            </div>
+<div id="teacher" class="tab" style="width:60%; margin:auto">
+    <h2>教师信息管理</h2>
 
-            <!-- 学生信息列表 -->
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>学生ID</th>
-                    <th>姓名</th>
-                    <th>性别</th>
-                    <th>Email</th>
-                    <th>Tel</th>
-                    <th>Password</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- 使用JSP标签循环遍历学生信息 -->
-                <c:forEach var="student" items="${studentList}">
-                    <tr>
-                        <td>${student.id}</td>
-                        <td contenteditable="true"
-                            onblur="updateStudentInfo('${student.id}', 'studentName', this.innerText)">
-                                ${student.name}</td>
-                        <td contenteditable="true"
-                            onblur="updateStudentInfo('${student.id}', 'studentGender', this.innerText)">
-                                ${student.gender}</td>
-                        <td contenteditable="true"
-                            onblur="updateStudentInfo('${student.id}', 'studentEmail', this.innerText)">
-                                ${student.email}</td>
-                        <td contenteditable="true"
-                            onblur="updateStudentInfo('${student.id}', 'studentTel', this.innerText)">
-                                ${student.tel}</td>
-                        <td contenteditable="true"
-                            onblur="updateStudentInfo('${student.id}', 'studentPassword', this.innerText)">
-                                ${student.password}</td>
-                        <td>
-                            <!-- 删除学生信息按钮 -->
-                            <button type="button" class="btn btn-danger"
-                                    onclick="deleteStudentInfo('${student.id}')">
-                                删除
-                            </button>
-                        </td>
-                    </tr>
-                </c:forEach>
+    <!-- 教师信息列表 -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th>教师ID</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>Email</th>
+            <th>Tel</th>
+            <th>Password</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- 使用JSP标签循环遍历教师信息 -->
+        <c:forEach var="teacher" items="${teacherList}">
+            <tr>
+                <td>${teacher.id}</td>
+                <td contenteditable="true"
+                    onblur="updateTeacherInfo('${teacher.id}', 'teacherName', this.innerText)">
+                        ${teacher.name}</td>
+                <td contenteditable="true"
+                    onblur="updateTeacherInfo('${teacher.id}', 'teacherGender', this.innerText)">
+                        ${teacher.gender}</td>
+                <td contenteditable="true"
+                    onblur="updateTeacherInfo('${teacher.id}', 'teacherEmail', this.innerText)">
+                        ${teacher.email}</td>
+                <td contenteditable="true"
+                    onblur="updateTeacherInfo('${teacher.id}', 'teacherTel', this.innerText)">
+                        ${teacher.tel}</td>
+                <td contenteditable="true"
+                    onblur="updateTeacherInfo('${teacher.id}', 'teacherPassword', this.innerText)">
+                        ${teacher.password}</td>
+                <td>
+                    <!-- 删除教师信息按钮 -->
+                    <button type="button" class="btn btn-danger"
+                            onclick="deleteTeacherInfo('${teacher.id}')">
+                        删除
+                    </button>
+                </td>
+            </tr>
+        </c:forEach>
 
-                <script type="text/javascript">
-                    function updateStudentInfo(studentId, field, new_value) {
-                        location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=updateStudent&studentId=" + studentId + "&" + field + "=" + new_value;
-                        // alert("student " + studentId + " 更改成功！");
-                    }
+        <script type="text/javascript">
+            function updateTeacherInfo(teacherId, field, new_value) {
+                location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=updateTeacher&teacherId=" + teacherId + "&" + field + "=" + new_value;
+                // alert("teacher " + teacherId + " 更改成功！");
+            }
 
-                    function deleteStudentInfo(studentId) {
-                        location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=deleteStudent&studentId=" + studentId;
-                        alert("student " + studentId + " 删除成功！");
-                    }
-                </script>
+            function deleteTeacherInfo(teacherId) {
+                location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=deleteTeacher&teacherId=" + teacherId;
+                alert("teacher " + teacherId + " 删除成功！");
+            }
+        </script>
 
-                </tbody>
-            </table>
-        </div>
+        </tbody>
+    </table>
+
+    <!-- 添加教师信息按钮 -->
+    <div class="text-center">
+        <button type="button" class="btn btn-primary mx-auto" data-toggle="modal"
+                data-target="#addTeacherModal">
+            添加教师信息
+        </button>
+    </div>
+</div>
+
+<div id="student" class="tab" style="width:60%; margin:auto">
+    <h2>学生信息管理</h2>
+
+    <!-- 学生信息列表 -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th>学生ID</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>Email</th>
+            <th>Tel</th>
+            <th>Password</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- 使用JSP标签循环遍历学生信息 -->
+        <c:forEach var="student" items="${studentList}">
+            <tr>
+                <td>${student.id}</td>
+                <td contenteditable="true"
+                    onblur="updateStudentInfo('${student.id}', 'studentName', this.innerText)">
+                        ${student.name}</td>
+                <td contenteditable="true"
+                    onblur="updateStudentInfo('${student.id}', 'studentGender', this.innerText)">
+                        ${student.gender}</td>
+                <td contenteditable="true"
+                    onblur="updateStudentInfo('${student.id}', 'studentEmail', this.innerText)">
+                        ${student.email}</td>
+                <td contenteditable="true"
+                    onblur="updateStudentInfo('${student.id}', 'studentTel', this.innerText)">
+                        ${student.tel}</td>
+                <td contenteditable="true"
+                    onblur="updateStudentInfo('${student.id}', 'studentPassword', this.innerText)">
+                        ${student.password}</td>
+                <td>
+                    <!-- 删除学生信息按钮 -->
+                    <button type="button" class="btn btn-danger"
+                            onclick="deleteStudentInfo('${student.id}')">
+                        删除
+                    </button>
+                </td>
+            </tr>
+        </c:forEach>
+
+        <script type="text/javascript">
+            function updateStudentInfo(studentId, field, new_value) {
+                location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=updateStudent&studentId=" + studentId + "&" + field + "=" + new_value;
+                // alert("student " + studentId + " 更改成功！");
+            }
+
+            function deleteStudentInfo(studentId) {
+                location.href = "${path}/CET6/admin.do?userId=${userId}&userPassword=${userPassword}&action=deleteStudent&studentId=" + studentId;
+                alert("student " + studentId + " 删除成功！");
+            }
+        </script>
+
+        </tbody>
+    </table>
+
+    <!-- 添加学生信息按钮 -->
+    <div class="text-center">
+        <button type="button" class="btn btn-primary mx-auto" data-toggle="modal"
+                data-target="#addStudentModal">
+            添加学生信息
+        </button>
     </div>
 </div>
 
@@ -470,6 +548,7 @@
         </div>
     </div>
 </div>
+
 
 <script type="text/javascript" src="${path}/resource/jquery/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="${path}/resource/bootstrap/js/bootstrap.js"></script>

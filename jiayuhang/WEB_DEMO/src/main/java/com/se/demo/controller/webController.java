@@ -306,6 +306,7 @@ public class webController {
     @RequestMapping("test.do")
     public String test(Model model,
                        @RequestParam(name = "display", defaultValue = "none") String display,
+                       @RequestParam(name = "Objdisplay", defaultValue = "none") String Objdisplay,
                        @RequestParam(name = "examId", defaultValue = "") String examId,
                        @RequestParam(name = "stuId", defaultValue = "") String stuId,
                        @RequestParam(name = "subAnswer", defaultValue = "") String subAnswer,
@@ -342,10 +343,17 @@ public class webController {
             model.addAttribute("subQuetion", subQuetion.get(0));
         }
 
+        model.addAttribute("Objdisplay", Objdisplay);
         model.addAttribute("display", display);
         model.addAttribute("examId", examId);
         model.addAttribute("stuId", stuId);
         return "test";
+    }
+
+    @RequestMapping("student_platform.do")
+    public String student_platform(Model model) {
+
+        return "student_platform";
     }
 
 }

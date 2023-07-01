@@ -43,7 +43,7 @@
 <nav class="navbar">
     <div class="container-fluid">
         <span class="navbar-brand" style="font-size: 32px; text-align: center; line-height: 50px; margin-left: 490px;">教师端</span>
-        <span class="navbar-text ml-auto" style="font-size: 20px; text-align: center; line-height: 50px; margin-left: 1040px;">欢迎，XX老师</span>
+        <span class="navbar-text ml-auto" style="font-size: 20px; text-align: center; line-height: 50px; margin-left: 1040px;">欢迎，jiayuhang老师</span>
     </div>
 </nav>
 

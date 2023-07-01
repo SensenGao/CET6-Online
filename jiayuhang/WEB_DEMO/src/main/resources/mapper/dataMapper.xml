@@ -67,15 +67,15 @@
     </select>
 
     <select id="delete_exam">
-        DELETE FROM exampaper as e WHERE e.ExamPaper_ID = #{Id}
+        DELETE FROM exampaper WHERE ExamPaper_ID = #{Id}
     </select>
 
     <select id="delete_student">
-        DELETE FROM examinee as e WHERE e.ID = #{Id}
+        DELETE FROM examinee WHERE ID = #{Id}
     </select>
 
     <select id="delete_teacher">
-        DELETE FROM examiner as e WHERE e.ID = #{Id}
+        DELETE FROM examiner WHERE ID = #{Id}
     </select>
 
     <select id="student_check" resultType="ExameeInfo">

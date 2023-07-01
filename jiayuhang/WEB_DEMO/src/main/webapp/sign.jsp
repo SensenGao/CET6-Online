@@ -16,17 +16,36 @@
     <link rel="stylesheet" href="${path}/resource/bootstrap/css/bootstrap.css">
     <style>
         body {
-            background-color: #b9def0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background-color: #a6e1e2;
+            /*font-family: Arial, sans-serif;*/
+            /*display: flex;*/
+            /*justify-content: center;*/
+            /*align-items: center;*/
+            /*height: 100vh;*/
+        }
+
+        .navbar {
+            background-color: #30679a;
+            color: white;
+            width: 100%; /* Set the desired width */
+            height: 80px;
+        }
+        .navbar-brand {
+            color: white;
+            margin-left: 10px;
+        }
+        .navbar-text {
+            color: white;
+            margin-right: 10px;
+        }
+        .logo-img {
+            width: 480px;
+            height: 80px;
         }
 
         .container {
             max-width: 400px;
-            margin: 0 auto;
+            margin: 100px auto;
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
@@ -91,6 +110,18 @@
         </script>
     </c:when>
 </c:choose>
+
+<nav class="navbar">
+    <div class="container-fluid">
+        <span class="navbar-brand" style="font-size: 32px; text-align: center; line-height: 50px; margin-left: 490px;">注册</span>
+        <%--        <span class="navbar-text ml-auto" style="font-size: 20px; text-align: center; line-height: 50px; margin-left: 1040px;">欢迎，XX老师</span>--%>
+    </div>
+</nav>
+
+<div style="position: absolute; top: 0; left: 0;">
+    <img src="${path}/resource/picture/logo.jpg" alt="Icon" class="logo-img">
+</div>
+
 <div class="container">
     <h2>注册信息</h2>
     <form>

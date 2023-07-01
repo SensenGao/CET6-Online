@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 86151
-  Date: 2022/7/18
-  Time: 1:46
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -16,17 +9,36 @@
     <link rel="stylesheet" href="${path}/resource/bootstrap/css/bootstrap.css">
     <style>
         body {
-            background-color: #b9def0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background-color: #a6e1e2;
+            /*font-family: Arial, sans-serif;*/
+            /*display: flex;*/
+            /*justify-content: center;*/
+            /*align-items: center;*/
+            /*height: 100vh;*/
+        }
+
+        .navbar {
+            background-color: #30679a;
+            color: white;
+            width: 100%; /* Set the desired width */
+            height: 80px;
+        }
+        .navbar-brand {
+            color: white;
+            margin-left: 10px;
+        }
+        .navbar-text {
+            color: white;
+            margin-right: 10px;
+        }
+        .logo-img {
+            width: 480px;
+            height: 80px;
         }
 
         .container {
             max-width: 400px;
-            margin: 0 auto;
+            margin: 190px auto 0;
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
@@ -75,6 +87,8 @@
 </head>
 <body>
 
+<p id="id" style="color: #428bca ;font-size: 60px; position:absolute; top: 50px; left: 30%; text-align: center;
+    font-weight:600; line-height: 250px;">欢迎使用四六级在线答题系统
 
 <c:choose>
     <c:when test="${flag == 1}">
@@ -88,7 +102,7 @@
             alert("登录成功，正在跳转到学生页面...");
             // 使用 JavaScript 的方式实现自动跳转
             setTimeout(function() {
-                location.href = "${path}/CET6/student.do?userId=${userId}&userPassword=${userPassword}";
+                location.href = "${path}/CET6/student_platform.do?userId=${userId}&userPassword=${userPassword}";
             }, 500); // 延迟 0.5 秒后跳转
         </script>
     </c:when>
@@ -112,7 +126,19 @@
     </c:when>
 </c:choose>
 
+<nav class="navbar">
+    <div class="container-fluid">
+        <span class="navbar-brand" style="font-size: 32px; text-align: center; line-height: 50px; margin-left: 490px;">登录/注册</span>
+        <%--        <span class="navbar-text ml-auto" style="font-size: 20px; text-align: center; line-height: 50px; margin-left: 1040px;">欢迎，XX老师</span>--%>
+    </div>
+</nav>
+
+<div style="position: absolute; top: 0; left: 0;">
+    <img src="${path}/resource/picture/logo.jpg" alt="Icon" class="logo-img">
+</div>
+
 <div class="container">
+
     <h2>用户登录</h2>
     <form>
         <label for="username">账号:</label>
