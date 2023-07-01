@@ -55,20 +55,7 @@
 <p id="id" style="color: #428bca ;font-size: 52px; position:absolute; top: 45px; left: 28%; text-align: center;
     font-weight:600; line-height: 250px;">欢迎进入四六级在线答题系统教师端
 
-
-    <%--<div class="container" style="width: 200px">--%>
-    <%--    <div style="text-align: center;">--%>
-    <%--        <div style="margin-top: 50px; width: 150px;">--%>
-    <%--            <button class="btn btn-primary btn-block mb-3" onclick="location.href='enter_subjective_questions.do'">录入主观题</button>--%>
-    <%--            <button class="btn btn-primary btn-block mb-3" onclick="location.href='enter_objective_questions.do'">录入客观题</button>--%>
-    <%--            <button class="btn btn-primary btn-block mb-3" onclick="openExamNumberModal()">查看题库/选择试题</button>--%>
-    <%--            <button class="btn btn-primary btn-block" onclick="location.href='grade_subjective.do'">批改主观题</button>--%>
-    <%--        </div>--%>
-    <%--    </div>--%>
-    <%--</div>--%>
-
-
-    <!--四个卡片进行跳转 -->
+<!--四个卡片进行跳转 -->
 <div class="card" style="width: 410px;
     position: absolute;top: 290px;left: 265px" >
     <img src="${path}/resource/picture/1.png" class="card-img-top" alt="...">

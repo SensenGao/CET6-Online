@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.se.demo.dao.dataDao">
+
+    <select id="addSubQuestion">
+        INSERT INTO subjective (Subjective_ID, Examinee_ID, Subjective_Stem, Subjective_Answer)
+        SELECT MAX(Subjective_ID) + 1,  'null', #{Stem}, #{Answer}
+        FROM subjective
+    </select>
+
+    <select id="addOptQuestion">
+        INSERT INTO choice (Choice_ID, Examiner_ID, Choice_Stem, Choice_Options, Choice_Answer)
+        SELECT MAX(Choice_ID) + 1,  'null', #{Stem}, #{Options}, #{Answer}
+        FROM choice
+    </select>
+
+    <select id="getSubQuestions" resultType="SubjectiveQuestion">
+--         SELECT s.Subjective_ID, s.Examinee_ID, s.Subjective_Stem, s.Subjective_Answer
+        SELECT *
+        FROM subjective
+    </select>
+
+
+    <select id="getExamSub" resultType="ExamPaper">
+        SELECT *
+        FROM exampaper e
+        WHERE e.ExamPaper_ID = #{ExamPaper_ID}
+    </select>
+
+    <select id="getSubById" resultType="SubjectiveQuestion">
+        SELECT *
+        FROM subjective s
+        WHERE s.Subjective_ID = #{Subjective_ID}
+    </select>
+
+    <select id="changeSubofExam">
+        UPDATE exampaper e
+        SET e.Subjective_IDs = #{newSub}
+        WHERE e.ExamPaper_ID = #{examId}
+    </select>
+
+    <select id="get_exam" resultType="ExamInfo">
+        select * from exampaper
+    </select>
+
+    <select id="get_student" resultType="ExameeInfo">
+        select * from examinee
+    </select>
+
+    <select id="get_teacher" resultType="ExamerInfo">
+        select * from examiner
+    </select>
+
+    <select id="add_exam">
+        INSERT INTO exampaper(ExamPaper_ID,ExamPaper_name,ExamDate)
+        VALUES(#{id},#{name},#{date})
+    </select>
+
+    <select id="up_exam">
+        UPDATE exampaper as e SET ${kind}=#{temp} WHERE e.ExamPaper_ID=#{id}
+    </select>
+
+    <select id="up_user">
+        UPDATE ${ku} as e SET ${kind}=#{temp} WHERE e.ID=#{id}
+    </select>
+
+    <select id="delete_exam">
+        DELETE FROM exampaper as e WHERE e.ExamPaper_ID = #{Id}
+    </select>
+
+    <select id="delete_student">
+        DELETE FROM examinee as e WHERE e.ID = #{Id}
+    </select>
+
+    <select id="delete_teacher">
+        DELETE FROM examiner as e WHERE e.ID = #{Id}
+    </select>
+
+    <select id="student_check" resultType="ExameeInfo">
+        select * from examinee as e
+        where e.ID=#{userId} and e.Password=#{userPassword}
+    </select>
+
+    <select id="teacher_check" resultType="ExamerInfo">
+        select * from examiner as e
+        where e.ID=#{userId} and e.Password=#{userPassword}
+    </select>
+
+    <select id="admin_check" resultType="AdminInfo">
+        select * from manager as e
+        where e.ID=#{userId} and e.Password=#{userPassword}
+    </select>
+
+    <select id="student_sign" resultType="ExameeInfo">
+        select * from examinee as e
+        where e.Email=#{email} or e.Tel=#{tel}
+    </select>
+
+    <select id="teacher_sign" resultType="ExamerInfo">
+        select * from examiner as e
+        where e.Email=#{email} or e.Tel=#{tel}
+    </select>
+
+    <select id="admin_sign" resultType="AdminInfo">
+        select * from manager as e
+        where e.Email=#{email} or e.Tel=#{tel}
+    </select>
+
+    <select id="get_id" resultType="int">
+        select MAX(ID) from ${role}
+    </select>
+
+    <select id="get_id_exam" resultType="int">
+        select MAX(ExamPaper_ID) from exampaper
+    </select>
+
+    <select id="push_sign">
+        INSERT INTO ${role}(ID,Name,Email,Tel,Password,Gender)
+        VALUES(#{id},#{name},#{email},#{tel},#{password},#{gender})
+    </select>
+</mapper>
