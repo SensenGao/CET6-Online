@@ -234,20 +234,15 @@ public class webController {
                 List<SubjectiveQuestion> examSublist = new ArrayList<>();
                 model.addAttribute("examSublist", examSublist);
             } else {
-//                System.out.println(subSequence.get(0).getSubjective_IDs());
                 if (newSub.length() >= 1) { //插入新的主观题;
                     subSequence.get(0).setSubjective_IDs(subSequence.get(0).getSubjective_IDs() + "@@" + newSub);
-//                    System.out.println("添加了新题");
                 }
-//                System.out.println(subSequence.get(0).getSubjective_IDs());
                 List<Integer> Ids = new ArrayList<>();
                 String[] tokens = subSequence.get(0).getSubjective_IDs().split("@@");
                 for (String token : tokens) {
                     try {
-//                        System.out.println(token);
                         int number = Integer.parseInt(token.trim());
                         Ids.add(number);
-//                        System.out.println(number);
                     } catch (NumberFormatException e) {
                         System.err.println("无法解析为数字: " + token); // 处理非数字的情况，可以选择忽略或进行其他处理
                     }
@@ -335,9 +330,6 @@ public class webController {
 
         }
         if (subId != "") {
-//            System.out.println(subId);
-//            Integer temp = Integer.parseInt(subId);
-//            int temp=Integer.valueOf(subId);
             List<SubjectiveQuestion> subQuetion = userService.getSubById(1);
             subQuetion.get(0).setSubjective_Answer("");
             model.addAttribute("subQuetion", subQuetion.get(0));
