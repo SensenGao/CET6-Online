@@ -110,6 +110,6 @@
 
 ## 六、反馈和支持
 
-​		如果您在使用六级在线考试系统时遇到任何问题或有任何建议，请随时联系我们的技术支持团队。您可以通过电子邮件(daviselppa@gmail.com)或在线支持渠道[issues](https://github.com/DavisElppa/CET6-Online/issues)提交与我们取得联系，并提供您的问题和反馈。我们将尽快回复您并提供帮助。
+​		如果您在使用六级在线考试系统时遇到任何问题或有任何建议，请随时联系我们的技术支持团队。您可以通过电子邮件(gaosensen@mail.nankai.edu.cn)或在线支持渠道[issues](https://github.com/DavisElppa/CET6-Online/issues)提交与我们取得联系，并提供您的问题和反馈。我们将尽快回复您并提供帮助。
 
 ​		谢谢您选择使用我们的六级在线考试系统！祝您游戏愉快！
